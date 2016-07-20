@@ -192,7 +192,7 @@ class Formatter
         $elements = [];
 
         $method = $field->getMethod();
-        $values = $item->{$method}();
+        $values = call_user_func_array([$item, $method], $field->get('method_args', []));
 
         if (null === $values) {
             return $elements;
@@ -247,7 +247,7 @@ class Formatter
         $elements = [];
 
         $method = $field->getMethod();
-        $values = $item->{$method}();
+        $values = call_user_func_array([$item, $method], $field->get('method_args', []));
 
         if (null === $values) {
             return $elements;
